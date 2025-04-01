@@ -8,21 +8,21 @@ class ListaCompra
     public function addProduct(string $instruction) : string
     {
         $instruction = explode(" ", $instruction);
+        $nameProduct = $instruction[1];
+        if(count($instruction) == 3) {
+            $quantity = (int)$instruction[2];
+        } else {
+            $quantity = 1;
+        }
+
         foreach ($this->productos as &$producto) {
-            if (strpos($producto, $instruction[1]) === 0) {
+            if (strpos($producto, $nameProduct) === 0) {
                 $currentQuantity = (int)explode(" x", $producto)[1];
-                $producto = $instruction[1] . " x" . ($currentQuantity + $instruction[2]);
-                return implode(", ", $this->productos);
+                $producto = $nameProduct . " x" . ($currentQuantity + $quantity);
+                return implode(" ", $this->productos);
             }
         }
-        if(count($instruction) == 3) {;
-            $producto =  $instruction[1] . " x" . $instruction[2];
-
-        }
-        if(count($instruction) == 2) {
-            $producto = $instruction[1] . " x1";
-        }
-        $this->productos[] = $producto;
+        $this->productos[] = $nameProduct . " x" . $quantity;
         return implode(", ", $this->productos);
     }
 
