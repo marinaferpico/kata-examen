@@ -10,7 +10,7 @@ class ListaCompraTest extends TestCase
     /**
      * @test
      */
-    public function givenInstructionAddProductWithoutQuantityReturnsProduct()
+    public function givenInstructionAddProductWithoutQuantityReturnsProduct() : void
     {
         $listaCompra = new ListaCompra();
         $result = $listaCompra->addProduct("añadir pan");
@@ -21,11 +21,19 @@ class ListaCompraTest extends TestCase
     /**
      * @test
      */
-    public function givenInstructionAddProductWithQuantityReturnsProduct()
+    public function givenInstructionAddProductWithQuantityReturnsProduct() : void
     {
         $listaCompra = new ListaCompra();
         $result = $listaCompra->addProduct("añadir pan 2");
         $this->assertEquals("pan x2", $result);
+    }
+
+    /**
+     * @test
+     */
+    public function givenInstructionAddExistProductReturnsProduct() : void
+    {
+
     }
 
 }
