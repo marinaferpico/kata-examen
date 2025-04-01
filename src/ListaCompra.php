@@ -9,11 +9,7 @@ class ListaCompra
     {
         $instruction = explode(" ", $instruction);
         $nameProduct = $instruction[1];
-        if(count($instruction) == 3) {
-            $quantity = (int)$instruction[2];
-        } else {
-            $quantity = 1;
-        }
+        $quantity = count($instruction) == 3 ? (int)$instruction[2] : 1;
 
         foreach ($this->productos as &$producto) {
             if (strpos($producto, $nameProduct) === 0) {
