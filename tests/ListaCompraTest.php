@@ -40,4 +40,15 @@ class ListaCompraTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
+    public function givenInstructionAddProductToNotEmptyListReturnListOfProducts() : void
+    {
+        $listaCompra = new ListaCompra();
+        $result = $listaCompra->addProduct("añadir pan");
+        $result1 = $listaCompra->addProduct("añadir leche 2");
+        $this->assertEquals("leche x2, pan x1", $result1);
+
+    }
 }

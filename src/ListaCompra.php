@@ -15,10 +15,14 @@ class ListaCompra
             if (strpos($producto, $nameProduct) === 0) {
                 $currentQuantity = (int)explode(" x", $producto)[1];
                 $producto = $nameProduct . " x" . ($currentQuantity + $quantity);
+
                 return implode(" ", $this->productos);
             }
         }
         $this->productos[] = $nameProduct . " x" . $quantity;
+        usort($this->productos, function($a, $b) {
+            return strcasecmp($a, $b);
+        });
         return implode(", ", $this->productos);
     }
 
