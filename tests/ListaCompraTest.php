@@ -28,4 +28,16 @@ class ListaCompraTest extends TestCase
         $this->assertEquals("leche x2", $result);
     }
 
+    /**
+     * @test
+     */
+    public function givenInstructionAddExistProductReturnsProduct() : void
+    {
+        $listaCompra = new ListaCompra();
+        $result = $listaCompra->addProduct("añadir pan");
+        $result1 = $listaCompra->addProduct("añadir pan 2");
+        $this->assertEquals("pan x3", $result1);
+
+    }
+
 }
